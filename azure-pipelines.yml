@@ -6,8 +6,14 @@
 trigger:
 - master
 
+pr:
+- master
+
 pool:
   vmImage: 'ubuntu-latest'
+
+variables:
+    PIP_CACHE_DIR: $(Pipeline.Workspace)/.pip
 
 steps:
 - task: UsePythonVersion@0
@@ -15,13 +21,22 @@ steps:
     versionSpec: '3.7'
   displayName: 'Use Python 3.7'
 
+- task: Cache@2
+  inputs:
+    key: 'python | "$(Agent.OS)" | requirements.txt'
+    restoreKeys: | 
+      python | "$(Agent.OS)"
+      python
+    path: $(PIP_CACHE_DIR)
+  displayName: 'Cache pip packages'
+
 - script: |
     python -m pip install --upgrade pip
+    pip install pytest-azurepipelines
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
 - script: |
-    pip install pytest-azurepipelines
     pytest --junitxml=junit/test-results.xml --cov-report=xml --cov=src tests/
   displayName: 'pytest'
 
