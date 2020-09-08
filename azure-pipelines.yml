@@ -29,7 +29,6 @@ steps:
   condition: succeededOrFailed()
   inputs:
     failTaskOnFailedTests: true
-    testRunner: 'XUnit2'
     testResultsFiles: 'test-output.xml'
     testRunTitle: 'pytest-coverage'
   displayName: 'Publish test results'
