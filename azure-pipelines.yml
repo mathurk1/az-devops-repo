@@ -18,7 +18,6 @@ steps:
     versionSpec: '3.7'
   displayName: 'Use Python 3.7'
 
-steps:
 - task: Cache@2
   inputs:
     key: 'python | "$(Agent.OS)" | requirements.txt'
