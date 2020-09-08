@@ -3,7 +3,10 @@ name: CI
 on:
   push:
     branches: 
-      - feature/blackcheck
+      - master
+  pr:
+    branches:
+      - master
 
 jobs:
   check-code-format:
