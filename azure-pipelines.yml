@@ -24,3 +24,12 @@ steps:
     pip install pytest-azurepipelines
     pytest --cov=src tests/
   displayName: 'pytest'
+
+- task: PublishTestResults@2
+condition: succeededOrFailed()
+inputs:
+  failTaskOnFailedTests: true
+  testRunner: 'XUnit2'
+  testResultsFiles: 'test-data.xml'
+  testRunTitle: 'pytest-coverage'
+displayName: 'Publish test results'
