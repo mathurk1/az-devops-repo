@@ -16,6 +16,7 @@ jobs:
     
     - name: check code format
       run: | 
+        pip install black
         sh scripts/check-format.sh 81 .
       if: always()
 
