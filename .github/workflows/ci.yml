@@ -17,7 +17,7 @@ jobs:
     - name: check code format
       run: | 
         python3 -m pip install --upgrade pip
-        pip install black
+        pip3 install black
         sh scripts/check-format.sh 81 .
       if: always()
 
