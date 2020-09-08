@@ -22,13 +22,13 @@ steps:
 
 - script: |
     pip install pytest-azurepipelines
-    pytest --cov=src tests/
+    pytest --junitxml=junit/test-results.xml --cov-report=xml --cov=src tests/
   displayName: 'pytest'
 
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
     failTaskOnFailedTests: true
-    testResultsFiles: 'test-output.xml'
+    testResultsFiles: 'junit/test-results.xml'
     testRunTitle: 'pytest-coverage'
   displayName: 'Publish test results'
