@@ -30,6 +30,6 @@ steps:
   inputs:
     failTaskOnFailedTests: true
     testRunner: 'XUnit2'
-    testResultsFiles: 'test-data.xml'
+    testResultsFiles: 'test-output.xml'
     testRunTitle: 'pytest-coverage'
   displayName: 'Publish test results'
