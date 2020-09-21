@@ -4,7 +4,5 @@ This is a minimal python repo. The goal is to use this repository to learn and i
 
 - Implement continous testing using Azure DevOps
 - Check for coverage
-- Build and deploy Sphinx documentation
-- Version bumping
 - PR checks for black
-- Setup docker container to run application
+- TODO: Build and deploy Sphinx documentation
